@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 import './assets/App.scss'
 
 //
-import { notificationsDB, mails, users, eventsDB, chartDB } from './Data/data.ts';
+import { notificationsDB, mails, users, eventsDB } from './Data/data.ts';
 
 import { Calendar, Popup } from 'devextreme-react';
 import { Avatar, Badge, IconButton } from '@mui/material';
@@ -180,7 +180,7 @@ function App() {
 
   const [tabIndex, setTabIndex] = useState(0);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_: React.SyntheticEvent, newValue: number) => {
     setTabIndex(newValue);
   };
 

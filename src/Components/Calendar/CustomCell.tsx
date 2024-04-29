@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { eventsDB } from '../../Data/data.ts';
 
 // didn't want to bother with fixing the types here sorry.

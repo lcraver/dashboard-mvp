@@ -1,3 +1,6 @@
+// for some reason colors wasn't detected from vite-env.d.ts so had
+// to copy it here...not sure why but didn't want to spend more time on it
+
 enum Colors {
   Purple = "secondary",
   Blue = "primary",
