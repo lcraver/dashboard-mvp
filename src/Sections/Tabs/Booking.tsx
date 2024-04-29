@@ -28,6 +28,7 @@ export function Booking() {
             <div className='box success left expand'>
                 <h3>Calendar</h3>
                 <p>Make sure to check your Calendar~</p>
+                <p>Make to view this app on different screen sizes as it's fully responsive!</p>
             </div>
         </div>
         <div className='col'>
