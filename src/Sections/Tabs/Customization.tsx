@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { Typography } from "@mui/material";
 
-export function Customization(props: any) {
-    return <div className='col' {...props}>
+export function Customization() {
+    return <div className='col'>
         <Typography variant="h1" gutterBottom>
             h1. Heading
         </Typography>
@@ -53,8 +51,5 @@ export function Customization(props: any) {
         </Typography>
     </div>;
 }
-
-Customization.propTypes = {};
-Customization.defaultProps = {};
 
 export default Customization;

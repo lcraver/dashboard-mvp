@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-export function Events(props: any) {
+export function Events() {
     return <div className='row'>
         <div className='col'>
             <div className='box primary left expand'>

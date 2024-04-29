@@ -1,17 +1,10 @@
-import Amenities from "./Sections/Tabs/Amenities";
-
 enum Colors {
   Purple = "secondary",
   Blue = "primary",
   Green = "success",
 }
 
-export const eventsDB: {
-  Date: number;
-  Name: string;
-  Description?: string;
-  Color: Colors;
-}[] = [
+export const eventsDB: DBEvent[] = [
   {
     Date: 1714253106,
     Name: "Test Event",

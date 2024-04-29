@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { amenitiesDB } from '../../Data/data';
+import AmenitiesCard from '../../Components/AmenitiesCard';
 
-import { amenitiesDB } from '../../data';
-import AmenitiesCard from '../../Components/Calendar/AmenitiesCard';
-
-export function Amenities(props: any) {
-    return <div className='row' {...props}>
+export function Amenities() {
+    return <div className='row'>
         {
             amenitiesDB.map((amenity) =>
                 <AmenitiesCard title={amenity.Name} description={amenity.Description} image={amenity.Image} />
@@ -12,8 +10,5 @@ export function Amenities(props: any) {
         }
     </div>;
 }
-
-Amenities.propTypes = {};
-Amenities.defaultProps = {};
 
 export default Amenities;

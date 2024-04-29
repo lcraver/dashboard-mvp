@@ -1,12 +1,60 @@
+// This is obviously a bit messy ideally each component should
+// really have it's own styles locally and only if absolutely
+// needed would we have global styles.
+
+// However, in the interest of time it was done this way.
+
+// VARIABLES
+
+// Measurements
 $sidebar: 450px;
 $gutter: 16px;
 $maxpagesize: 1600px;
 $sradius: 8px;
 $radius: 32px;
 
+// animations
+$transitionTime: 0.5s;
+$transitionTimeLong: 1s;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY($gutter);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// colors
+$background: linear-gradient(
+  135deg,
+  rgba(240, 247, 247, 1) 0%,
+  rgba(174, 218, 218, 0.2) 100%
+);
+$primary: #1976d2;
+$secondary: #9c27b0;
+$success: #2e7d32;
+
 // breaks
 $tablet: $maxpagesize - $sidebar;
 $mobile: 800px;
+
+// CUSTOM CSS
+
+body {
+  background: $background;
+}
 
 .no-m {
   margin: 0;
@@ -18,7 +66,11 @@ $mobile: 800px;
   padding: $gutter calc($gutter * 2);
   text-align: center;
 
-  h1, h2, h3, h4, h5 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     margin: 0;
   }
 
@@ -31,17 +83,17 @@ $mobile: 800px;
   }
 
   &.primary {
-    background-color: #1976d2;
+    background-color: $primary;
     color: white;
   }
 
   &.secondary {
-    background-color: #9c27b0;
+    background-color: $secondary;
     color: white;
   }
 
   &.success {
-    background-color: #2e7d32;
+    background-color: $success;
     color: white;
   }
 }
@@ -65,7 +117,6 @@ $mobile: 800px;
 
 #pie {
   width: 100%;
-  max-height: 300px;
 }
 
 // notification popup
@@ -80,11 +131,7 @@ $mobile: 800px;
   .mail,
   .user {
     outline: border;
-    background: linear-gradient(
-      135deg,
-      rgba(240, 247, 247, 1) 0%,
-      rgba(174, 218, 218, 0.2) 100%
-    );
+    background: $background;
     border-radius: $sradius;
     padding: $gutter;
 
@@ -106,14 +153,14 @@ $mobile: 800px;
 }
 
 .calendar {
-  margin: 32px 16px;
+  margin: calc($gutter * 2) $gutter;
 
   .dx-calendar-cell:not(.dx-calendar-selected-date) .events {
     position: relative;
     &:before {
       content: "";
       display: block;
-      background-color: #1976d2;
+      background-color: black;
       width: 5px;
       height: 5px;
       bottom: 0px;
@@ -124,29 +171,29 @@ $mobile: 800px;
     }
 
     &.primary:before {
-      background-color: #1976d2;
+      background-color: $primary;
     }
 
     &.secondary:before {
-      background-color: #9c27b0;
+      background-color: $secondary;
     }
 
     &.success:before {
-      background-color: #2e7d32;
+      background-color: $success;
     }
   }
 
   .dx-calendar-cell.dx-calendar-selected-date .events {
     &.primary {
-      background-color: #1976d2;
+      background-color: $primary;
     }
 
     &.secondary {
-      background-color: #9c27b0;
+      background-color: $secondary;
     }
 
     &.success {
-      background-color: #2e7d32;
+      background-color: $success;
     }
   }
 
@@ -195,12 +242,12 @@ $mobile: 800px;
   }
 
   .dashboard {
-    animation: fadeInUp 1s;
+    animation: fadeInUp $transitionTimeLong;
     height: 100%;
     padding: $gutter calc($sidebar + $gutter * 3) $gutter $gutter;
 
     .tab:not([hidden]) {
-      animation: fadeIn 0.5s;
+      animation: fadeIn $transitionTime;
       animation-fill-mode: forwards;
       > div {
         padding: $gutter 0;
@@ -213,10 +260,10 @@ $mobile: 800px;
   }
 
   .calendar-panel {
-    animation: fadeIn 0.5s;
+    animation: fadeIn $transitionTime;
     margin: $gutter 0;
     border-radius: $sradius;
-    transition: all 0.2s ease-in-out;
+    transition: all $transitionTime ease-in-out;
     overflow: hidden;
     padding: $gutter;
     position: fixed;
@@ -234,14 +281,14 @@ $mobile: 800px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      margin: 0 16px;
+      gap: $gutter;
+      margin: 0 $gutter;
 
       .badges {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 16px;
+        gap: $gutter;
       }
 
       .calendar-button {
@@ -256,7 +303,7 @@ $mobile: 800px;
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 8px;
+        gap: calc($gutter / 2);
 
         .info {
           align-items: flex-end;
@@ -274,6 +321,7 @@ $mobile: 800px;
     }
   }
 
+  // handle tablet page break
   @media screen and (max-width: $tablet) {
     .dashboard {
       padding: $gutter;
@@ -285,7 +333,7 @@ $mobile: 800px;
       top: 0px;
       right: $gutter;
       width: unset;
-      border-radius: 128px;
+      border-radius: $radius;
       padding: 4px 0;
 
       .topbar .info {
@@ -307,10 +355,10 @@ $mobile: 800px;
     }
   }
 
+  // handle mobile phone page break
   @media screen and (max-width: $mobile) {
-
     .dashboard {
-      padding-top: 64px;
+      padding-top: calc($gutter * 4);
     }
 
     .calendar-panel {
@@ -320,25 +368,5 @@ $mobile: 800px;
       margin: 0;
       border-radius: 0 0 $sradius $sradius;
     }
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY($gutter);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
   }
 }

@@ -10,17 +10,22 @@ import Typography from '@mui/material/Typography';
 const AmenitiesCardPropTypes = {
   title: String,
   description: String,
-  image: String
+  image: String,
+  link: String
 };
 
 const ComponentPropTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   image: PropTypes.string,
+  link: {
+    href: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }
 };
 
 type ComponentTypes = InferProps<typeof ComponentPropTypes>;
-const AmenitiesCard = ({ title, description, image }: ComponentTypes) => {
+const AmenitiesCard = ({ title, description, image, link }: ComponentTypes) => {
   return (
     <Card>
       <CardMedia
@@ -37,7 +42,7 @@ const AmenitiesCard = ({ title, description, image }: ComponentTypes) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
+        {link && <Button size="small" target="_blank" href={link.href}>{link.name}</Button>}
       </CardActions>
     </Card>
   );
